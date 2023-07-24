@@ -1,12 +1,15 @@
 import logging
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CallbackQueryHandler
+import os
+from dotenv import load_dotenv
 
 # python-telegram-bot==13.7.0 версия
 
 
 # Токен
-TOKEN = "5947542394:AAGKFymHjLa--3bMz2QF8q-CP-EgfdWyKEE"
+load_dotenv()  # Загрузка переменных окружения из файла .env
+TOKEN = os.getenv("TOKEN")
 
 # аудио
 SQL_MP3_FILE = "SQL.mp3"
