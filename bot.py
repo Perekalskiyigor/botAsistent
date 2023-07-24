@@ -1,4 +1,3 @@
-import logging
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, CallbackQueryHandler
 import os
@@ -18,14 +17,14 @@ LOVE_MP3_FILE = "Love.mp3"
 # Старт
 def start(update: Update, _: CallbackContext) -> None:
     user = update.effective_user
-    update.message.reply_text(f"Привет, {user.first_name}! Я бот с двумя фотографиями.")
+    update.message.reply_text(f"Привет, {user.first_name}! Привет Я бот Игоря П. Вот его фото")
     update.message.reply_photo(photo=open("img1.jpg", "rb"))
     update.message.reply_photo(photo=open("img2.jpg", "rb"))
 
  #кнопки
     buttons = [
         [KeyboardButton("SQL"), KeyboardButton("Love")],
-        [KeyboardButton("Git")]
+        [KeyboardButton("Git")],[KeyboardButton("О авторе")]
     ]
     keyboard = ReplyKeyboardMarkup(buttons, one_time_keyboard=True)
     update.message.reply_text("Что вы хотите узнать?", reply_markup=keyboard)
@@ -41,7 +40,7 @@ def play_love_audio(update: Update, _: CallbackContext) -> None:
 # Обработчик кнопки Git
 def git_link(update: Update, _: CallbackContext) -> None:
     git_repo_link = "https://github.com/Perekalskiyigor/bot_forYandex.git"
-    update.message.reply_text(f"Ссылка на Git репозиторий: {git_repo_link}")
+    update.message.reply_text(f"Я программист на большом заводе. Программирую всякие разные штуки,: {git_repo_link}")
 
 def main() -> None:
     updater = Updater(TOKEN)
